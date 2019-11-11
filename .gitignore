@@ -59,6 +59,10 @@ target/
 
 # IDE
 .idea/
+.vscode/
+
+# Mac OS
+.DS_Store
 
 *.txt
 *.jpg

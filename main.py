@@ -1,6 +1,8 @@
 from __future__ import print_function
 
 import argparse
+import multiprocessing
+from torch import set_num_threads as torchSetNumThreads
 
 from torch.utils.data import DataLoader
 
@@ -14,6 +16,11 @@ from SubPixelCNN.solver import SubPixelTrainer
 from VDSR.solver import VDSRTrainer
 from dataset.data import get_training_set, get_test_set
 
+
+threadMax = multiprocessing.cpu_count()
+torchSetNumThreads(threadMax * 2)
+
+
 # ===========================================================
 # Training settings
 # ===========================================================
@@ -26,8 +33,8 @@ parser.add_argument('--lr', type=float, default=0.01, help='Learning Rate. Defau
 parser.add_argument('--seed', type=int, default=123, help='random seed to use. Default=123')
 
 # model configuration
-parser.add_argument('--upscale_factor', '-uf',  type=int, default=4, help="super resolution upscale factor")
-parser.add_argument('--model', '-m', type=str, default='srgan', help='choose which model is going to use')
+parser.add_argument('--upscale_factor', '-uf',  type=int, default=2, help="super resolution upscale factor")
+parser.add_argument('--model', '-m', type=str, default='dbpn', help='choose which model is going to use')
 
 args = parser.parse_args()
 
