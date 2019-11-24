@@ -50,20 +50,28 @@ def main():
     testing_data_loader = DataLoader(dataset=test_set, batch_size=args.testBatchSize, shuffle=False)
 
     if args.model == 'sub':
+        print("SubPixelTrainer")
         model = SubPixelTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'srcnn':
+        print("SRCNNTrainer")
         model = SRCNNTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'vdsr':
+        print("VDSRTrainer")
         model = VDSRTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'edsr':
+        print("EDSRTrainer")
         model = EDSRTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'fsrcnn':
+        print("FSRCNNTrainer")
         model = FSRCNNTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'drcn':
+        print("DRCNTrainer")
         model = DRCNTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'srgan':
+        print("SRGANTrainer")
         model = SRGANTrainer(args, training_data_loader, testing_data_loader)
     elif args.model == 'dbpn':
+        print("DBPNTrainer")
         model = DBPNTrainer(args, training_data_loader, testing_data_loader)
     else:
         raise Exception("the model does not exist")
